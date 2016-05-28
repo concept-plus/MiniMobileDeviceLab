@@ -119,21 +119,18 @@ computer.
 	1. Use `com.google.sample.devicelab.MMDLClient` (default) or your app bundle identifier.
 2. Download the GoogleService-Info.plist
 
+#### Add GoogleService-Info.plist to XCode project
+
+1. Open up the MMDLClient.xcodeproj in XCode
+2. Drag the GoogleService-Info.plist your previously downloaded to the `MMDLClient/Supporting Files/` directory. Make sure you select the `Copy items if needed` option.
 
 #### Install cocoapods
 
 1. Install [cocoapods](https://cocoapods.org/).
-1. Navigate to the `iOS` directory and run 
-```
-pod install
-``` 
-1. Edit the MMDLClient.xcworkspace in XCode
-
-```
-open MMDLClient.xcworkspace
-```
-
-1. Drag the GoogleService-Info.plist your previously downloaded to the `MMDLClient/Supporting Files/` directory. Make sure you select the `Copy items if needed` option.
+1. Navigate to the `iOS` directory and run
+    ```
+    pod install
+    ```
 
 #### Update fbAppName
 
