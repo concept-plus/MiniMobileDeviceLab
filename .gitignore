@@ -9,11 +9,12 @@ bower_components
 #
 # Config files
 #
-secret
 config.json
 config.js
 config.*.json
 config.*.js
+firebase.json
+.firebaserc
 
 app.yaml
 app.*.yaml

@@ -1,0 +1,11 @@
+# MMDLClient
+use_frameworks!
+platform :ios, '9.0'
+
+# Firebase pods
+pod 'Firebase'
+pod 'Firebase/Auth'
+pod 'Firebase/Database'
+
+target 'MMDLClient' do
+end
