@@ -134,7 +134,7 @@ computer.
 
 #### Configure XCode project and deploy to device
 
-1. In [`ViewController.m`](https://github.com/GoogleChrome/MiniMobileDeviceLab/blob/master/iOS/Browser2/ViewController.m), change `fbAppName` to the Firebase App name you created earlier
+1. In [`ViewController.m`](https://github.com/GoogleChrome/MiniMobileDeviceLab/blob/master/iOS/Browser2/ViewController.m), change `fbAppName` to the Firebase App name (replace `goog-mtv-device-lab` with the app name you created earlier)
 1. Open up the `GoogleService-Info.plist` and copy the `REVERSE_CLIENT_ID`
 1. Open up the `info.plist` and paste the `REVERSE_CLIENT_ID` to the `URL Types > URL Schemes > Item 0` parameter
 1. Deploy app to device
