@@ -123,9 +123,10 @@ computer.
 #### Install cocoapods
 
 1. Install [cocoapods](https://cocoapods.org/).
-1. Navigate to the `iOS` directory and run ```
-pod install
+1. Navigate to the `iOS` directory and run 
 ```
+pod install
+``` 
 1. Edit the MMDLClient.xcworkspace in XCode
 
 ```
