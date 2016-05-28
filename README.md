@@ -119,11 +119,6 @@ computer.
 	1. Use `com.google.sample.devicelab.MMDLClient` (default) or your app bundle identifier.
 2. Download the GoogleService-Info.plist
 
-#### Add GoogleService-Info.plist to XCode project
-
-1. Open up the MMDLClient.xcodeproj in XCode
-2. Drag the GoogleService-Info.plist your previously downloaded to the `MMDLClient/Supporting Files/` directory. Make sure you select the `Copy items if needed` option.
-
 #### Install cocoapods
 
 1. Install [cocoapods](https://cocoapods.org/).
@@ -132,9 +127,17 @@ computer.
     pod install
     ```
 
-#### Update fbAppName
+#### Add GoogleService-Info.plist to XCode project
+
+1. Open up the `MMDLClient.xcworkspace` (NOT the MMDLCLient.xcodeproj) in XCode
+2. Drag the `GoogleService-Info.plist` your previously downloaded to the `MMDLClient/Supporting Files/` directory. Make sure you select the `Copy items if needed` option.
+
+#### Configure XCode project and deploy to device
 
 1. In [`ViewController.m`](https://github.com/GoogleChrome/MiniMobileDeviceLab/blob/master/iOS/Browser2/ViewController.m), change `fbAppName` to the Firebase App name you created earlier
+1. Open up the `GoogleService-Info.plist` and copy the `REVERSE_CLIENT_ID`
+1. Open up the `info.plist` and paste the `REVERSE_CLIENT_ID` to the `URL Types > URL Schemes > Item 0` parameter
+1. Deploy app to device
 
 
 ### Windows
