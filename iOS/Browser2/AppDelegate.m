@@ -22,6 +22,8 @@
 #import "AppDelegate.h"
 #import "ViewController.h"
 
+@import Firebase;
+
 @interface AppDelegate ()
 
 @end
@@ -30,6 +32,8 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    // Firebase init.
+    [FIRApp configure];
     // Override point for customization after application launch.
     // Register the preference defaults early.
     NSLog(@"didFinishLaunchingWithOptions");

@@ -48,6 +48,9 @@ static const CGFloat kAddressHeight = 22.0f;
 @property (strong, nonatomic) UITextField *addressField;
 @property (strong, nonatomic) NSString *strURL;
 
+@property (strong, nonatomic) FIRDatabaseReference *postRef;
+@property (strong, nonatomic) NSString *postKey;
+
 - (void)loadRequestFromString:(NSString*)urlString;
 - (void)loadRequestFromAddressField:(id)addressField;
 
@@ -62,35 +65,34 @@ static const CGFloat kAddressHeight = 22.0f;
 @implementation ViewController
 
 - (void)initFirebase {
+    
     NSLog(@"initFirebase");
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *fbAppName = [defaults stringForKey:@"fbAppName"];
     if (!fbAppName) {
         fbAppName = [NSString stringWithFormat:@"goog-mtv-device-lab"];
     }
-
+    
     NSString *fbURL = [NSString stringWithFormat:@"https://%@.firebaseio.com/url", fbAppName];
     NSLog(@"%@", fbURL.uppercaseString);
-
-    self.myRootRef = [[Firebase alloc] initWithUrl:fbURL];
-    [self.myRootRef authAnonymouslyWithCompletionBlock:^(NSError *error, FAuthData *authData) {
-        if (error) {
-            [self informError:error];
-        } else {
-            NSLog(@"Firebase authentication completed.");
-            
-            [self.myRootRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-                @try {
-                    self.strURL = snapshot.value;
-                    NSLog(@"** New URL: %@", self.strURL);
-                    [self loadRequestFromString:self.strURL];
-                }
-                @catch (NSException *ex) {
-                    NSLog(@"%@", ex.reason);
-                }
-            }];
-        }
-    }];
+    
+    [FIRDatabase database].persistenceEnabled = YES;
+    self.myRootRef = [[[FIRDatabase database] reference] child:@"url"];
+    
+    [[FIRAuth auth]
+     signInAnonymouslyWithCompletion:^(FIRUser *_Nullable user, NSError *_Nullable error) {
+         NSLog(@"Firebase authentication completed.");
+         [self.myRootRef observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot *snapshot) {
+             @try {
+                 self.strURL = snapshot.value;
+                 NSLog(@"** New URL: %@", self.strURL);
+                 [self loadRequestFromString:self.strURL];
+             }
+             @catch (NSException *ex) {
+                 NSLog(@"%@", ex.reason);
+             }
+         }];
+     }];
 }
 
 

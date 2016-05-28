@@ -29,23 +29,48 @@ content.
 
 ## Getting Started
 
-### Setup Firebase & front end
+### Setup Firebase
 
-1. Create a new Firebase app (and account if necessary)
+1. Create a new [Firebase](http://www.firebase.com) app (and account if necessary)
 1. Import the initial config from [`init-data.json`](https://github.com/GoogleChrome/MiniMobileDeviceLab/blob/master/FirebaseSetup/init-data.json)
-1. In **Security & Rules**, paste the contents of [`rules.json`](https://github.com/GoogleChrome/MiniMobileDeviceLab/blob/master/FirebaseSetup/rules.json)
-1. In **Login & Auth**, enable Anonymous Authentication
-1. In **Secrets**, create a new Secret, and note it down for later.
-1. In _PiLabFrontEnd_, copy [`config.sample.js`](https://github.com/GoogleChrome/MiniMobileDeviceLab/blob/master/PiLabFrontEnd/config.sample.js) to `config.js`
+	1. Database > DATA > more options (... icon) > Import JSON
+1. Copy and paste the contents of [`rules.json`](https://github.com/GoogleChrome/MiniMobileDeviceLab/blob/master/FirebaseSetup/rules.json)
+	1. Database > RULES
+1. Enable Anonymous Authentication
+	1. Auth > SIGN IN METHOD
+1. Copy your Firebase app secret to be used for your `firebaseKey`
+	1. Project Settings > DATABASE
+1. In the `PiLabFrontEnd` folder, copy [`config.sample.js`](https://github.com/GoogleChrome/MiniMobileDeviceLab/blob/master/PiLabFrontEnd/config.sample.js) to `config.js`
 1. Fill in the attributes of `config.js` accordingly.
     1. `firebaseUrl` is the URL for your Firebase project.
-    1. `firebaseKey` is the api key for that Firebase project.
-1. Deploy the _PiLabFrontEnd_, you can use Firebase’s static hosting or one of
-your choosing
+    1. `firebaseKey` is the api key (secret) for the Firebase project.
 
 If you want to test pages using PageSpeed Insights or WebPage Test, be sure to
 get an API Key and update `config.apiKeys` in Firebase with the appropriate key.
 
+### Setup front end
+
+1. In the `PiLabFrontEnd` folder, run `bower install` to prepare the bower components
+1. Deploy the `PiLabFrontEnd`, you can use Firebase’s static hosting or one of your choosing
+
+#### Firebase hosting
+1. Install `firebase-tools`
+
+```
+npm install -g firebase-tools
+```
+
+2. In the MMDL root directory, execute the following and follow the instructions.
+
+```
+firebase init
+```
+
+3. Deploy to Firebase.
+
+```
+firebase deploy
+```
 
 ### Set up the server
 
@@ -88,9 +113,33 @@ computer.
 
 **PreRequisites:** XCode & all of the other pre-reqs for building iOS apps
 
-1. Clone the repo to a local directory and open the project in XCode
+#### Add iOS app to your Firebase
+
+1. From the [Firebase console](https://console.firebase.google.com) project settings, add the iOS app.
+	1. Use `com.google.sample.devicelab.MMDLClient` (default) or your app bundle identifier.
+2. Download the GoogleService-Info.plist
+
+
+#### Install cocoapods
+
+1. Install [cocoapods](https://cocoapods.org/).
+2. Navigate to the `iOS` directory and run
+
+```
+pod install
+```
+
+3. Edit the MMDLClient.xcworkspace in XCode
+
+```
+open MMDLClient.xcworkspace
+```
+
+4. Drag the GoogleService-Info.plist your previously downloaded to the `MMDLClient/Supporting Files/` directory. Make sure you select the `Copy items if needed` option.
+
+#### Update fbAppName
+
 1. In [`ViewController.m`](https://github.com/GoogleChrome/MiniMobileDeviceLab/blob/master/iOS/Browser2/ViewController.m), change `fbAppName` to the Firebase App name you created earlier
-1. Deploy app to iOS devices
 
 
 ### Windows

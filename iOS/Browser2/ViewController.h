@@ -23,10 +23,12 @@
 #import <Firebase/Firebase.h>
 #import <WebKit/WebKit.h>
 
+@import Firebase;
+
 @interface ViewController : UIViewController
 
 @property (nonatomic, strong) WKWebView *wkWebView;
-@property (nonatomic, strong) Firebase *myRootRef;
+@property (nonatomic, strong) FIRDatabaseReference *myRootRef;
 
 - (void)initFirebase;
 - (void)connectFirebase;
