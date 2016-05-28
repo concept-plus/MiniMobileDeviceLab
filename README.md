@@ -123,19 +123,17 @@ computer.
 #### Install cocoapods
 
 1. Install [cocoapods](https://cocoapods.org/).
-2. Navigate to the `iOS` directory and run
-
+1. Navigate to the `iOS` directory and run
 ```
 pod install
 ```
-
-3. Edit the MMDLClient.xcworkspace in XCode
+1. Edit the MMDLClient.xcworkspace in XCode
 
 ```
 open MMDLClient.xcworkspace
 ```
 
-4. Drag the GoogleService-Info.plist your previously downloaded to the `MMDLClient/Supporting Files/` directory. Make sure you select the `Copy items if needed` option.
+1. Drag the GoogleService-Info.plist your previously downloaded to the `MMDLClient/Supporting Files/` directory. Make sure you select the `Copy items if needed` option.
 
 #### Update fbAppName
 
