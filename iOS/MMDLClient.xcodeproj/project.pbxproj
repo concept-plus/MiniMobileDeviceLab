@@ -387,7 +387,10 @@
 				INFOPLIST_FILE = Browser2/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"$(inherited)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.google.sample.devicelab.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = MMDLClient;
 				PROVISIONING_PROFILE = "";
@@ -408,7 +411,10 @@
 				INFOPLIST_FILE = Browser2/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"$(inherited)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.google.sample.devicelab.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = MMDLClient;
 				PROVISIONING_PROFILE = "";
